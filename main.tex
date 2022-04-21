@@ -6,6 +6,10 @@
 % \documentclass[printMode]{ecnuthesis}   (开启打印模式, 适合双面打印)
 % \documentclass[printMode]{ecnuthesis}   (关闭打印模式, 适合提交电子版)
 
+
+% \setCJKfamilyfont{simsun}{SimSun.ttf}
+% \newcommand{\SimSun}{\CJKfamily{simsun}}
+
 \ecnuSetup {
   % 参数设置
   % 允许采用两种方式设置选项:
@@ -25,6 +29,8 @@
     titleEN = {Research on Fish Touching in the School of Data Science and Engineering},
     % 英文标题
     %
+    % 如果名字包含生僻字导致输出错误，请注释掉line34，取消注释line33，将名字输入在“包含生僻字的名字”，字体获取见README.md
+    % author = {\CJKfontspec{SimSun.ttf}[AutoFakeBold = {3.17}]{包含生僻字的名字}},
     author = {钱院长的小迷弟},
     % 作者姓名
     %
@@ -129,6 +135,13 @@
 % \subsection{简介}
 互联网的高速发展使得教育模式逐步信息化
 
+\subsection{关于摸鱼}
+
+学生在上课、工作以及实验室搬砖时摸鱼也逐步普遍
+
+\subsubsection{为什么要摸鱼}
+
+因为我的心里只有感恩
 
 \section{研究内容}
 
@@ -165,12 +178,13 @@
 
 \begin{table}[h]
 \centering
+  \bicaption{一张很可爱的表格}{A very cute tabular}
 \begin{tabular}{llll} 
   & A & B & C \\
   \hline complexity & $O(nd^{2})$ & $O({knd^{2}})$ & $O(n^{2}d)$ \\
   \hline path & $O(1)$ & $O(n)$ & $O(n)$ \\
 \end{tabular}
-  \bicaption{一张很可爱的表格}{A very cute tabular}
+
   \label{tab:my_label}
 \end{table}
 
@@ -188,6 +202,12 @@ BERT\cite{devlin-etal-2019-bert}是一种神奇的模型，本文的引用格式
 \chapter{模型设计与构建}
 
 \section{参数设置}
+
+\subsection{炼丹用的参数}
+
+\subsubsection{学习率设置}
+
+\paragraph{我真的不会调参了}
 
 \chapter{实验设计与分析}
 

@@ -2,7 +2,7 @@
 \RequirePackage{expl3}
 \usepackage{hyperref}
 \hypersetup{colorlinks=true,linkcolor=black,hidelinks}
-
+\usepackage{pdfpages}
 \GetIdInfo $Id: ecnuthesis.cls 0.1 2021-01-31 12:00:00Z Koyamin <koyafumin@gmail.com> $
   {Undergraduate Thesis Template for East China Normal University}
 \ProvidesExplClass{\ExplFileName}
@@ -478,8 +478,7 @@
             },
             subsection = {
               name    = {,},
-              number  = 
-                {\arabic{chapter}.\arabic{section}.\arabic{subsection}},
+              number  = {\arabic{chapter}.\arabic{section}.\arabic{subsection}},
               format        = ,
               titleformat   = \sffamily\zihao{-4},
               numberformat  = \zihao{-4},
@@ -510,31 +509,39 @@
           {
             chapter = {
               name    = {,、},
-            %   number  = \chinese{chapter},
               number  = \arabic{chapter},
               format  = \sffamily\zihao{-4},
               aftername  = \ ,
             },
             section = {
-              name    = {,.},
-            %   number  = \chinese{section},
+              name    = {,\hspace{1pt}},
               number  = \arabic{chapter}.\arabic{section},
               format  = \sffamily\zihao{-4},
               aftername  = \ ,
             }, 
             subsection = {
-              name    = {,.},
+              name    = {,\hspace{0pt}},
               number  = \arabic{chapter}.\arabic{section}.\arabic{subsection},
               format        = ,
               titleformat   = \sffamily\zihao{-4},
               numberformat  = \zihao{-4},
+              aftername  = \ ,
             }, 
+            % subsubsection = {
+            %   name    = {(,)},
+            %   number  = \arabic{subsubsection},
+            %   format        = ,
+            %   titleformat   = \sffamily\zihao{-4},
+            %   numberformat  = \zihao{-4},
+            %   aftername  = \ ,
+            % }, 
             subsubsection = {
-              name    = {(,)},
-              number  = \arabic{subsubsection},
+              name    = {,\hspace{0pt}},
+              number  = \arabic{chapter}.\arabic{section}.\arabic{subsection}.\arabic{subsubsection},
               format        = ,
               titleformat   = \sffamily\zihao{-4},
               numberformat  = \zihao{-4},
+              aftername  = \ ,
             }, 
             paragraph = {
               name    = {,)},
@@ -669,10 +676,10 @@
 \PassOptionsToPackage 
   {
     backend   = biber,
-    % style     = gb7714,
     style     = gb7714-2015,
     seconds   = true,
     hyperref  = true,
+    gbpub = false
   } 
   { biblatex }
 \RequirePackage { biblatex }
@@ -1125,6 +1132,11 @@
     \addtocontents{toc}{\protect\thispagestyle{empty}}
     \tableofcontents
   }
+  
+\NewDocumentCommand \makeIntegrity { }
+  {
+    \includepdf[]{Integrity.pdf}
+  }
 
 \AtBeginDocument
   {
@@ -1139,8 +1151,10 @@
       \makecoveri
     \end{titlepage}
     \restoregeometry
+    \makeIntegrity %创建诚信书
     \makeTOC
   }
+  
 
 \NewDocumentCommand \frontmatter { }
   {
